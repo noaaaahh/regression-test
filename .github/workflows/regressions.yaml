@@ -6,7 +6,7 @@ on:
       - opened
       - synchronize
     paths:
-      - "src/components/**"
+      - "packages/vanilla-extract/src/components/**"
 
 jobs:
   visual-regression:
