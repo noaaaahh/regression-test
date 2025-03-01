@@ -1,22 +1,24 @@
 import clsx from "clsx";
 import type { ComponentPropsWithoutRef } from "react";
 import { vapor } from "~/libs/factory";
-import { sizes, colors, shapes, base } from "./button.css";
+import * as styles from "./button.css";
 
-type Size = keyof typeof sizes;
-type Color = keyof typeof colors;
-type Shape = keyof typeof shapes;
+type Size = keyof typeof styles.sizes;
+type Color = keyof typeof styles.colors;
+type Shape = keyof typeof styles.shapes;
 
 interface ButtonProps extends ComponentPropsWithoutRef<typeof vapor.button> {
   size?: Size;
   color?: Color;
   shape?: Shape;
+  stretch?: boolean;
 }
 
 export const Button = ({
   color = "primary",
   shape = "fill",
   size = "md",
+  stretch,
   className,
   children,
   ...props
@@ -24,10 +26,11 @@ export const Button = ({
   return (
     <vapor.button
       className={clsx(
-        base,
-        colors[color],
-        shapes[shape],
-        sizes[size],
+        styles.base,
+        styles.colors[color],
+        styles.shapes[shape],
+        styles.sizes[size],
+        stretch && styles.stretch,
         className
       )}
       {...props}

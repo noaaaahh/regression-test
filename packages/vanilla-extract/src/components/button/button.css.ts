@@ -182,3 +182,7 @@ export const shapes = styleVariants({
     },
   },
 });
+
+export const stretch = style({
+  width: "100%",
+});
