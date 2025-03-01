@@ -55,7 +55,7 @@ jobs:
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && DEBUG=pw:browser CI=true pnpm test"
+            "npx wait-on tcp:6006 && pnpm vanilla playwright install --with-deps && CI=true pnpm test"
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
