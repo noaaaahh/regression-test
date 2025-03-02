@@ -158,7 +158,9 @@ createGlobalTheme(":root", vars, {
 const pretendard = "Pretendard";
 
 globalFontFace(pretendard, {
-  src: 'url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css")',
+  src: "url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff')",
+  fontWeight: 400,
+  fontStyle: "normal",
 });
 
 globalStyle("*", {
