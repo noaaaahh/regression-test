@@ -165,7 +165,7 @@ const contentFont = "Outfit";
 
 globalFontFace(contentFont, {
   src: "url(https://fonts.gstatic.com/s/outfit/v6/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2) format('woff2')",
-  fontWeight: 100,
+  fontWeight: 400,
   fontStyle: "normal",
   fontDisplay: "swap",
 });
