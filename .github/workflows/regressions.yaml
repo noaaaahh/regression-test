@@ -10,14 +10,15 @@ on:
 
 jobs:
   visual-regression:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 18
+          check-latest: true
 
       # install pnpm && install dependencies with cache
       - name: Setup corepack
@@ -28,6 +29,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 25
+
+      - id: get-store-path
+        run: echo STORE_PATH=$(pnpm store path) >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        timeout-minutes: 5
+        id: cache-pnpm-store
+        with:
+          path: ${{ steps.get-store-path.outputs.STORE_PATH }}
+          key: pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-
+            pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm install
 
