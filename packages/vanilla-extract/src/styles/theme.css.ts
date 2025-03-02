@@ -155,11 +155,11 @@ createGlobalTheme(":root", vars, {
   },
 });
 
-const pretendard = "Pretendard";
+// const pretendard = "Pretendard";
 
-globalFontFace(pretendard, {
-  src: 'url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css")',
-});
+// globalFontFace(pretendard, {
+//   src: 'url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css")',
+// });
 
 globalStyle("*", {
   boxSizing: "border-box",
