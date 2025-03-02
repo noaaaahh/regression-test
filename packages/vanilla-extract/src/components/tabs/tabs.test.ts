@@ -6,9 +6,7 @@ test("tabs", async ({ page }, workerInfo) => {
     viewMode: "story",
   });
 
-  await page.goto(`/iframe.html?${params.toString()}`, {
-    waitUntil: "domcontentloaded",
-  });
+  await page.goto(`/iframe.html?${params.toString()}`, { waitUntil: "commit" });
   await page.waitForSelector("#storybook-root");
   await page.waitForLoadState("domcontentloaded");
 
