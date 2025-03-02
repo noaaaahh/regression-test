@@ -15,18 +15,15 @@ async function waitForStableDom(
   }
 }
 
-test("button", async ({ page }, workerInfo) => {
+test("button", async ({ page }) => {
   // busy 객체를 사용해 DOM 변경 횟수를 추적합니다.
   const busy = { pendingDom: 0 };
 
   // exposeFunction은 그대로 사용합니다.
-  await page.exposeFunction(
-    "DOM_변환_감지",
-    (key: string, timeoutId: number) => {
-      if (key === "dom++") busy.pendingDom += 1;
-      if (key === "dom--") busy.pendingDom -= 1;
-    }
-  );
+  await page.exposeFunction("DOM_변환_감지", (key: string) => {
+    if (key === "dom++") busy.pendingDom += 1;
+    if (key === "dom--") busy.pendingDom -= 1;
+  });
 
   // 페이지 초기 스크립트에 MutationObserver를 추가합니다.
   // _requestAnimtaionFrame 오타를 requestAnimationFrame으로 수정했습니다.
@@ -49,6 +46,18 @@ test("button", async ({ page }, workerInfo) => {
 
   await page.goto(`/iframe.html?${params.toString()}`);
   await page.waitForSelector("#storybook-root");
+
+  await page.waitForTimeout(5000);
+  await page.waitForLoadState("domcontentloaded");
+  await page.waitForLoadState("load");
+  await page.waitForLoadState("networkidle");
+
+  await page.waitForTimeout(5000);
+  await page.waitForLoadState("domcontentloaded");
+  await page.waitForLoadState("load");
+  await page.waitForLoadState("networkidle");
+
+  await page.waitForTimeout(5000);
   await page.waitForLoadState("domcontentloaded");
   await page.waitForLoadState("load");
   await page.waitForLoadState("networkidle");
