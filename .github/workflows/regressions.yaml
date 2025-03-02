@@ -56,7 +56,7 @@ jobs:
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && CI=true npx playwright test -c ./packages/vanilla-extract/playwright.config.ts"
+            "npx wait-on tcp:6006 && cd packages/vanilla-extract && CI=true npx playwright test"
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
