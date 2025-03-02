@@ -21,11 +21,9 @@ export default defineConfig({
 
   workers: process.env.CI ? 1 : undefined,
 
-  webServer: process.env.CI
-    ? undefined
-    : {
-        command: "cd ../../ && pnpm storybook",
-        url: BASE_URL,
-        reuseExistingServer: true,
-      },
+  webServer: {
+    command: "cd ../../ && pnpm storybook",
+    url: BASE_URL,
+    reuseExistingServer: true,
+  },
 });
