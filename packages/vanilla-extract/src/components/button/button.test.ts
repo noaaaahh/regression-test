@@ -36,8 +36,8 @@ test("button", async ({ page }, workerInfo) => {
   await page.evaluate(() => window.waitForDomStable);
   await page.waitForTimeout(10000);
 
-  await expect(page).toHaveScreenshot(
-    `vanilla-button--test-bed-${workerInfo.project.name}.png`,
-    { fullPage: true, animations: "disabled" }
-  );
+  await expect(page).toHaveScreenshot({
+    fullPage: true,
+    animations: "disabled",
+  });
 });

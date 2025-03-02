@@ -36,8 +36,8 @@ test("tabs", async ({ page }, workerInfo) => {
   // DOM이 안정된 상태가 될 때까지 대기
   await page.evaluate(() => window.waitForDomStable);
 
-  await expect(page).toHaveScreenshot(
-    `vanilla-tabs--test-bed-${workerInfo.project.name}.png`,
-    { fullPage: true, animations: "disabled" }
-  );
+  await expect(page).toHaveScreenshot({
+    fullPage: true,
+    animations: "disabled",
+  });
 });
