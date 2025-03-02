@@ -12,7 +12,7 @@ export default defineConfig({
   // ...
   reporter: [["html", { outputFolder: "./tests/report" }]],
   retries: process.env.CI ? 2 : 0, // set to 2 when running on CI
-  use: { baseURL: BASE_URL, trace: "on-first-retry" },
+  use: { baseURL: BASE_URL, trace: "retain-on-failure" },
   projects: [
     {
       name: "chromium",
