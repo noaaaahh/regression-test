@@ -24,6 +24,6 @@ export default defineConfig({
   webServer: {
     command: "cd ../../ && pnpm storybook",
     url: BASE_URL,
-    reuseExistingServer: true,
+    reuseExistingServer: false,
   },
 });
