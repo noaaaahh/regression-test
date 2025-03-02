@@ -13,6 +13,7 @@ export default defineConfig({
   reporter: [["html", { outputFolder: "./tests/report" }]],
   use: { baseURL: BASE_URL },
   projects: [{ name: "desktop", use: { ...devices["Desktop Chrome"] } }],
+  workers: process.env.CI ? 1 : undefined,
 
   webServer: process.env.CI
     ? undefined
