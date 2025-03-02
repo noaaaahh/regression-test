@@ -35,6 +35,7 @@ test("button", async ({ page }, workerInfo) => {
 
   // DOM이 안정된 상태가 될 때까지 대기
   await page.evaluate(() => window.waitForDomStable);
+  await page.waitForTimeout(10000);
 
   await expect(page).toHaveScreenshot(
     `vanilla-button--test-bed-${workerInfo.project.name}.png`,
