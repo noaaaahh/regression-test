@@ -1,4 +1,4 @@
-import { test, expect, chromium } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 // DOM 변경이 완료될 때까지 busy.pendingDom을 폴링하여 기다리는 함수
 async function waitForStableDom(
@@ -15,13 +15,7 @@ async function waitForStableDom(
   }
 }
 
-test("button", async () => {
-  const browser = await chromium.launch({
-    args: ["--disable-font-subpixel-positioning", "--disable-hinting"],
-  });
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
+test("button", async ({ page }, workerInfo) => {
   // busy 객체를 사용해 DOM 변경 횟수를 추적합니다.
   const busy = { pendingDom: 0 };
 
@@ -64,8 +58,6 @@ test("button", async () => {
     fullPage: true,
     animations: "disabled",
   });
-
-  await browser.close();
 });
 
 // import { test, expect } from "@playwright/test";
