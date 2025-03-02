@@ -11,7 +11,8 @@ export default defineConfig({
 
   // ...
   reporter: [["html", { outputFolder: "./tests/report" }]],
-  use: { baseURL: BASE_URL },
+  retries: process.env.CI ? 2 : 0, // set to 2 when running on CI
+  use: { baseURL: BASE_URL, trace: "on-first-retry" },
   projects: [
     {
       name: "chromium",
@@ -20,12 +21,6 @@ export default defineConfig({
   ],
 
   workers: process.env.CI ? 1 : undefined,
-
-  retries: process.env.CI ? 2 : 0, // set to 2 when running on CI
-  // ...
-  use: {
-    trace: "on-first-retry", // record traces on first retry of each test
-  },
 
   webServer: {
     command: "cd ../../ && pnpm storybook",
