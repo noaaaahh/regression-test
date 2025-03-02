@@ -8,7 +8,7 @@ test("tabs", async ({ page }, workerInfo) => {
 
   await page.goto(`/iframe.html?${params.toString()}`);
   await page.waitForSelector("#storybook-root");
-  await page.waitForLoadState("networkidle");
+  await page.waitForLoadState("domcontentloaded");
 
   await expect(page).toHaveScreenshot(
     `vanilla-tabs--test-bed-${workerInfo.project.name}.png`,
