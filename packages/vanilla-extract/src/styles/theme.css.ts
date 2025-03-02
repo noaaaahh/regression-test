@@ -155,16 +155,10 @@ createGlobalTheme(":root", vars, {
   },
 });
 
-// const pretendard = "Pretendard";
+const pretendard = "Pretendard";
 
-// globalFontFace(pretendard, {
-//   src: 'url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css")',
-// });
-
-const contentFont = "Outfit";
-
-globalFontFace(contentFont, {
-  src: "url(https://fonts.gstatic.com/s/outfit/v6/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2) format('woff2')",
+globalFontFace(pretendard, {
+  src: "url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css) format('woff2')",
   fontWeight: 400,
   fontStyle: "normal",
   fontDisplay: "swap",
@@ -174,5 +168,5 @@ globalStyle("*", {
   boxSizing: "border-box",
   margin: 0,
   padding: 0,
-  fontFamily: `${contentFont}, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
+  fontFamily: `${pretendard}, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
 });
