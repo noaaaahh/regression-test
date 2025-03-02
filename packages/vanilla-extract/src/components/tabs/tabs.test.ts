@@ -6,9 +6,9 @@ test("tabs", async ({ page }, workerInfo) => {
     viewMode: "story",
   });
 
-  await page.goto(`/iframe.html?${params.toString()}`, { waitUntil: "commit" });
+  await page.goto(`/iframe.html?${params.toString()}`, { waitUntil: "load" });
   await page.waitForSelector("#storybook-root");
-  await page.waitForLoadState("domcontentloaded");
+  await page.waitForLoadState("load");
 
   await expect(page).toHaveScreenshot(
     `vanilla-tabs--test-bed-${workerInfo.project.name}.png`,
