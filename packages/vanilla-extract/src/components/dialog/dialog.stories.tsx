@@ -19,18 +19,18 @@ export const TEST_BED: Story = {
   render: (args) => (
     <Dialog {...args} open>
       <Dialog.Trigger asChild>
-        <Button>hihi</Button>
+        <Button>Trigger</Button>
       </Dialog.Trigger>
       <Dialog.CombinedContent>
         <Dialog.Header>
-          <Dialog.Title>다이얼로그입니다.</Dialog.Title>
+          <Dialog.Title>Title</Dialog.Title>
         </Dialog.Header>
         <Dialog.Body>
-          <Dialog.Description>기본 형태의 다이얼로그입니다.</Dialog.Description>
+          <Dialog.Description>Description</Dialog.Description>
         </Dialog.Body>
         <Dialog.Footer>
           <Dialog.Close asChild>
-            <Button color="hint">닫기</Button>
+            <Button color="hint">Close</Button>
           </Dialog.Close>
         </Dialog.Footer>
       </Dialog.CombinedContent>

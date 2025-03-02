@@ -30,13 +30,9 @@ type Story = StoryObj<typeof Button>;
 export const TEST_BED: Story = {
   render: () => (
     <div style={{ display: "flex" }}>
-      <Button color="primary">primary</Button>
-      <Button color="secondary">secondary</Button>
-      <Button color="success">success</Button>
-      <Button color="danger">danger</Button>
-      <Button color="warning">warning</Button>
-      <Button color="hint">hint</Button>
-      <Button color="contrast">contrast</Button>
+      <Button color="primary">Blue</Button>
+      <Button color="secondary">Gray</Button>
+      <Button color="success">Green</Button>
     </div>
   ),
 };
