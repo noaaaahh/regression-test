@@ -28,7 +28,7 @@
     "build": "tsup",
     "lint": "eslint --max-warnings 0 src",
     "clean": "rm -rf dist",
-    "test": "npx playwright test -c ./playwright.config.ts"
+    "test": "npx playwright test -c ./playwright.config.ts --ui"
   },
   "devDependencies": {
     "@playwright/test": "^1.50.1",
