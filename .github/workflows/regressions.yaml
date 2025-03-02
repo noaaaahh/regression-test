@@ -46,7 +46,7 @@ jobs:
             pnpm-store-
             pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
 
       # build storybook
       - name: Build Storybook
