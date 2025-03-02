@@ -52,6 +52,11 @@ jobs:
       - name: Build Storybook
         run: pnpm build-storybook --quiet
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Storbook Build
+          path: storybook-static
+
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
