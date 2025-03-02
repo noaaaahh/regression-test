@@ -11,17 +11,13 @@ on:
 jobs:
   visual-regression:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.50.1-noble
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          check-latest: true
+          node-version: lts/*
 
       # install pnpm && install dependencies with cache
       - name: Setup corepack
@@ -33,35 +29,13 @@ jobs:
         with:
           fetch-depth: 25
 
-      - id: get-store-path
-        run: echo STORE_PATH=$(pnpm store path) >> $GITHUB_OUTPUT
+      - run: pnpm install
 
-      - uses: actions/cache@v4
-        timeout-minutes: 5
-        id: cache-pnpm-store
-        with:
-          path: ${{ steps.get-store-path.outputs.STORE_PATH }}
-          key: pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-store-
-            pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-      - run: pnpm install --no-frozen-lockfile
-
-      # build storybook
-      - name: Build Storybook
-        run: pnpm build-storybook --quiet
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Storbook Build
-          path: storybook-static
-
-      - name: Serve Storybook and run tests
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && cd packages/vanilla-extract && DEBUG=pw:browser CI=true npx playwright test"
+      # run Storybook
+      - run: pnpm test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
