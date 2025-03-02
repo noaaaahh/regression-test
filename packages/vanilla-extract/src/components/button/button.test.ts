@@ -12,6 +12,9 @@ test("button", async ({ page }, workerInfo) => {
   await page.waitForSelector("#storybook-root");
   await page.waitForLoadState("domcontentloaded");
   await page.evaluate(() => document.fonts.ready);
+  await page.waitForURL(
+    "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+  );
 
   await expect(page).toHaveScreenshot(
     `vanilla-button--test-bed-${workerInfo.project.name}.png`,
