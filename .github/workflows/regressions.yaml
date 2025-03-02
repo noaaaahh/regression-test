@@ -62,7 +62,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: ./tests/report/
+          path: ./packages/vanilla-extract/tests/report/
 
   deploy-report:
     needs: visual-regression
