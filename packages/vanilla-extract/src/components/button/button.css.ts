@@ -9,6 +9,8 @@ export const base = style({
   borderRadius: vars.radii["300"],
   cursor: "pointer",
 
+  verticalAlign: "baseline",
+
   ":disabled": {
     pointerEvents: "none",
     opacity: 0.32,
