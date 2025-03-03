@@ -67,6 +67,8 @@ test("button", async ({ page }) => {
   await page.waitForSelector("#storybook-root");
   await page.waitForLoadState("domcontentloaded");
 
+  await page.evaluate(() => document.fonts.ready);
+
   await expect(page).toHaveScreenshot({
     fullPage: true,
     animations: "disabled",

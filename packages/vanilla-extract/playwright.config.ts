@@ -11,7 +11,7 @@ export default defineConfig({
 
   // ...
   reporter: [["html", { outputFolder: "./tests/report" }]],
-  use: { baseURL: BASE_URL, trace: "retain-on-failure" },
+  use: { baseURL: BASE_URL, trace: "retain-on-failure", headless: false },
   projects: [
     {
       name: "chromium",
