@@ -14,7 +14,7 @@ import { fontWeights } from "./font-weights";
 import { letterSpacings } from "./letter-spacings";
 import { primitives, semantics } from "./colors";
 import { kebabCase } from "~/utils/strings";
-// import "./normailize.css";
+import "./normailize.css";
 
 const PREFIX = "vapor";
 export const vapor = layer();
