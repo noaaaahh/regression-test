@@ -45,6 +45,6 @@ jobs:
       - name: Take a snapshot
         run: |
           cd packages/vanilla-extract && npx playwright test --update-snapshots
-          git add ./tests/__snapshot__
+          git add ./tests/__screenshot__
           git commit -m 'test: update snapshots'
           git push -u origin HEAD:${{ github.ref }}
