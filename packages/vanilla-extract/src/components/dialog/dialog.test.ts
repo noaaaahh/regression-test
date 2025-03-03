@@ -8,6 +8,7 @@ test("dialog", async ({ page }) => {
 
   await page.goto(`/iframe.html?${params.toString()}`);
   await page.waitForSelector("#storybook-root");
+  await page.waitForSelector("div[role='dialog']");
   await page.waitForLoadState("domcontentloaded");
 
   await page.evaluate(() => document.fonts.ready);
