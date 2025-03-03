@@ -1,6 +1,7 @@
 name: "[CI] 시각적 회귀 테스트"
 
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - opened
