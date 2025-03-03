@@ -46,7 +46,7 @@ jobs:
       - run: pnpm install
 
       - name: Install Playwright Browsers
-        run: cd packages/vanilla-extract && npx playwright install
+        run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
 
       # run Storybook
       - run: pnpm test
