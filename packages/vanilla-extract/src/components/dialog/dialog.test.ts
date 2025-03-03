@@ -34,10 +34,6 @@ async function waitForStableDom(
   }
 }
 
-test.beforeEach(async ({ context }) => {
-  await context.route(/Pretendard/, (route) => route.abort());
-});
-
 test("dialog", async ({ page }) => {
   // const responsePromise = page.waitForResponse(
   //   "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"

@@ -26,9 +26,7 @@ export const TEST_BED: Story = {
           <Dialog.Title>Title</Dialog.Title>
         </Dialog.Header>
         <Dialog.Body>
-          <Dialog.Description asChild>
-            <span style={{ border: "1px solid black" }}>Description</span>
-          </Dialog.Description>
+          <Dialog.Description>Description</Dialog.Description>
         </Dialog.Body>
         <Dialog.Footer>
           <Dialog.Close asChild>
