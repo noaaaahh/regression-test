@@ -15,10 +15,6 @@ async function waitForStableDom(
   }
 }
 
-test.beforeEach(async ({ context }) => {
-  await context.route(/Pretendard/, (route) => route.abort());
-});
-
 test("button", async ({ page }) => {
   // busy 객체를 사용해 DOM 변경 횟수를 추적합니다.
   const busy = { pendingDom: 0 };
