@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 
+test.beforeEach(async ({ context }) => {
+  await context.route(/Pretendard/, (route) => route.abort());
+});
+
 test("dialog", async ({ page }) => {
   const params = new URLSearchParams({
     id: "vanilla-dialog--test-bed",
