@@ -159,16 +159,49 @@ export const notoSans = fontFace([
   },
 ]);
 
-export const nanum = fontFace([
+// export const nanum = fontFace([
+//   {
+//     src: "url(https://fastly.jsdelivr.net/gh/projectnoonnu/2502-1@1.0/DAEHWA.woff2) format('woff2')",
+//     fontWeight: 400,
+//     fontStyle: "normal",
+//     fontDisplay: "swap",
+//   },
+//   {
+//     src: "url(https://fastly.jsdelivr.net/gh/projectnoonnu/2502-1@1.0/DAEHWA_Bold.woff2) format('woff2')",
+//     fontWeight: 700,
+//     fontStyle: "normal",
+//     fontDisplay: "swap",
+//   },
+// ]);
+
+export const maru = fontFace([
   {
-    src: "url(https://fastly.jsdelivr.net/gh/projectnoonnu/2502-1@1.0/DAEHWA_Bold.woff2) format('woff2')",
+    src: 'url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2) format("woff2")',
     fontWeight: 400,
     fontStyle: "normal",
     fontDisplay: "swap",
   },
   {
-    src: "url(https://fastly.jsdelivr.net/gh/projectnoonnu/2502-1@1.0/DAEHWA_Bold.woff2) format('woff2')",
+    src: 'url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2) format("woff2")',
+    fontWeight: 600,
+    fontStyle: "normal",
+    fontDisplay: "swap",
+  },
+  {
+    src: 'url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2) format("woff2")',
     fontWeight: 700,
+    fontStyle: "normal",
+    fontDisplay: "swap",
+  },
+  {
+    src: 'url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.woff2) format("woff2")',
+    fontWeight: 300,
+    fontStyle: "normal",
+    fontDisplay: "swap",
+  },
+  {
+    src: 'url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.woff2) format("woff2")',
+    fontWeight: 200,
     fontStyle: "normal",
     fontDisplay: "swap",
   },

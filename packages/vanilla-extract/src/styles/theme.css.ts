@@ -1,6 +1,7 @@
 import {
   createGlobalTheme,
   createGlobalThemeContract,
+  fontFace,
   globalStyle,
   layer,
 } from "@vanilla-extract/css";
@@ -13,7 +14,6 @@ import { fontWeights } from "./font-weights";
 import { letterSpacings } from "./letter-spacings";
 import { primitives, semantics } from "./colors";
 import { kebabCase } from "~/utils/strings";
-import { nanum } from "./fonts.css";
 // import "./normailize.css";
 
 const PREFIX = "vapor";
@@ -156,9 +156,15 @@ createGlobalTheme(":root", vars, {
   },
 });
 
+const pretendard = fontFace([
+  {
+    src: 'local("Pretendard")',
+  },
+]);
+
 globalStyle("*", {
   boxSizing: "border-box",
   margin: 0,
   padding: 0,
-  fontFamily: `${nanum}, -apple₩-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
+  fontFamily: `${pretendard}, -apple₩-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
 });
