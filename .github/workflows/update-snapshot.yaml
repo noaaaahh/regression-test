@@ -42,6 +42,10 @@ jobs:
       - name: Install Playwright Browsers
         run: cd packages/vanilla-extract && npx playwright install --with-deps
 
+      - run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Take a snapshot
         run: |
           cd packages/vanilla-extract && npx playwright test --update-snapshots
