@@ -16,9 +16,9 @@ async function waitForStableDom(
 }
 
 test("dialog", async ({ page }) => {
-  const responsePromise = page.waitForResponse(
-    "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-  );
+  // const responsePromise = page.waitForResponse(
+  //   "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+  // );
   const busy = { pendingDom: 0 };
 
   // exposeFunction은 그대로 사용합니다.
@@ -49,9 +49,9 @@ test("dialog", async ({ page }) => {
   await page.goto(`/iframe.html?${params.toString()}`, { waitUntil: "commit" });
   await page.waitForSelector("#storybook-root");
   await page.waitForLoadState("domcontentloaded");
-  const response = await responsePromise;
+  // const response = await responsePromise;
 
-  await response.finished();
+  // await response.finished();
 
   await expect(page).toHaveScreenshot({ animations: "disabled" });
 });
