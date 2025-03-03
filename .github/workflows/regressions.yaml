@@ -46,7 +46,7 @@ jobs:
       - run: pnpm install
 
       - name: Install Playwright Browsers
-        run: cd packages/vanilla-extract && npx playwright install --with-deps msedge
+        run: cd packages/vanilla-extract && npx playwright install
 
       # run Storybook
       - run: pnpm test
