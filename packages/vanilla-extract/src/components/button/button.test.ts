@@ -47,6 +47,8 @@ test("button", async ({ page }) => {
   await page.goto(`/iframe.html?${params.toString()}`);
   await page.waitForSelector("#storybook-root");
   await page.waitForLoadState("domcontentloaded");
+  await page.waitForLoadState("load");
+  await page.waitForLoadState("networkidle");
 
   // 안정된 DOM 상태에서 스냅샷을 찍습니다.
   await expect(page).toHaveScreenshot({

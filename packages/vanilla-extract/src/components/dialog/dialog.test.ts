@@ -10,6 +10,8 @@ test("dialog", async ({ page }) => {
   await page.waitForSelector("#storybook-root");
   await page.waitForSelector("div[role='dialog']");
   await page.waitForLoadState("domcontentloaded");
+  await page.waitForLoadState("load");
+  await page.waitForLoadState("networkidle");
 
   await page.evaluate(() => document.fonts.ready);
 
