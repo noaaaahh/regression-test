@@ -65,7 +65,7 @@ test("dialog", async ({ page }) => {
     viewMode: "story",
   });
 
-  await page.goto(`/iframe.html?${params.toString()}`, { waitUntil: "commit" });
+  await page.goto(`/iframe.html?${params.toString()}`);
   await page.waitForSelector("#storybook-root");
   await page.waitForLoadState("domcontentloaded");
   // const response = await responsePromise;
