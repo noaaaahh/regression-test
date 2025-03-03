@@ -50,7 +50,6 @@ test("button", async ({ page }) => {
 
   // 안정된 DOM 상태에서 스냅샷을 찍습니다.
   await expect(page).toHaveScreenshot({
-    fullPage: true,
     animations: "disabled",
   });
 });

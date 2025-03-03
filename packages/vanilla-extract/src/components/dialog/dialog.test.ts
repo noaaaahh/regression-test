@@ -13,7 +13,6 @@ test("dialog", async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
 
   await expect(page).toHaveScreenshot({
-    fullPage: true,
     animations: "disabled",
   });
 });
