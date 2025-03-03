@@ -1,0 +1,50 @@
+name: "[CI] 스냅샷 업데이트"
+
+on: [workflow_dispatch]
+
+jobs:
+  update-snapshots:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          check-latest: true
+
+      # install pnpm && install dependencies with cache
+      - name: Setup corepack
+        run: |
+          npm i -g corepack@0.31
+          corepack enable
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 25
+
+      - id: get-store-path
+        run: echo STORE_PATH=$(pnpm store path) >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        timeout-minutes: 5
+        id: cache-pnpm-store
+        with:
+          path: ${{ steps.get-store-path.outputs.STORE_PATH }}
+          key: pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-
+            pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - run: pnpm install
+
+      - name: Install Playwright Browsers
+        run: cd packages/vanilla-extract && npx playwright install --with-deps
+
+      - name: Take a snapshot
+        run: |
+          cd packages/vanilla-extract && npx playwright test --update-snapshots
+          git add ./tests/__snapshot__
+          git commit -m 'test: update snapshots'
+          git push -u origin HEAD:${{ github.ref }}
