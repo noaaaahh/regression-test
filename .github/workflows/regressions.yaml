@@ -12,7 +12,6 @@ on:
 jobs:
   visual-regression:
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.50.1-noble
     steps:
       - uses: actions/checkout@v4
 
@@ -46,6 +45,9 @@ jobs:
             pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm install
+
+      - name: Install Playwright Browsers
+        run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
 
       # run Storybook
       - run: pnpm test
