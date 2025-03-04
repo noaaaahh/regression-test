@@ -12,6 +12,7 @@ on:
 jobs:
   visual-regression:
     runs-on: macos-latest
+    container: mcr.microsoft.com/playwright:v1.50.1-noble
     steps:
       - uses: actions/checkout@v4
 
@@ -46,9 +47,6 @@ jobs:
 
       - run: pnpm install
 
-      - name: Install Playwright Browsers
-        run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
-
       # run Storybook
       - run: pnpm test
 
@@ -68,7 +66,9 @@ jobs:
           name: playwright-report
           path: ./report/
 
-      - run: aws s3 cp './report/' s3://${{ secrets.AWS_BUCKET }} --recursive
+      - run: |
+          aws s3 rm s3://${{ secrets.AWS_BUCKET }} --recursive
+          aws s3 cp './report/' s3://${{ secrets.AWS_BUCKET }} --recursive
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

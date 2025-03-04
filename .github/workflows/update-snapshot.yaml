@@ -5,6 +5,7 @@ on: [workflow_dispatch]
 jobs:
   update-snapshots:
     runs-on: macos-latest
+    container: mcr.microsoft.com/playwright:v1.50.1-noble
     steps:
       - uses: actions/checkout@v4
 
@@ -39,12 +40,9 @@ jobs:
 
       - run: pnpm install
 
-      - name: Install Playwright Browsers
-        run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
-
       - run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Take a snapshot
         run: |
