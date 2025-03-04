@@ -11,7 +11,7 @@ on:
 
 jobs:
   visual-regression:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.50.1-noble
     steps:
       - uses: actions/checkout@v4
