@@ -27,6 +27,16 @@ export default {
 
 type Story = StoryObj<typeof Button>;
 
+export const TEST_BED: Story = {
+  render: () => (
+    <div style={{ display: "flex" }}>
+      <Button color="primary">Blue</Button>
+      <Button color="secondary">Gray</Button>
+      <Button color="success">Green</Button>
+    </div>
+  ),
+};
+
 export const Default: Story = {
   render: (args) => <Button {...args}>버튼</Button>,
 };
