@@ -44,13 +44,20 @@ jobs:
             pnpm-store-
             pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - run: pnpm install
+      # build storybook & test
+      - name: Build Storybook
+        run: pnpm build-storybook --quiet
 
-      - name: Install Playwright Browsers
-        run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Storbook Build
+          path: storybook-static
 
-      # run Storybook
-      - run: pnpm test
+      - name: Serve Storybook and run tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:6006 && cd packages/vanilla-extract && CI=true npx playwright test"
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
