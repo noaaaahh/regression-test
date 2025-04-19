@@ -9,6 +9,8 @@ export const base = style({
   borderRadius: vars.radii["300"],
   cursor: "pointer",
 
+  verticalAlign: "baseline",
+
   ":disabled": {
     pointerEvents: "none",
     opacity: 0.32,
@@ -20,21 +22,41 @@ export const sizes = styleVariants({
     gap: vars.space["050"],
     height: vars.sizes["300"],
     paddingInline: vars.space["050"],
+
+    fontSize: vars.fontSizes["075"],
+    fontWeight: vars.fontWeights[500],
+    lineHeight: vars.lineHeights["075"],
+    letterSpacing: vars.letterSpacings["s1"],
   },
   md: {
     gap: vars.space["075"],
     height: vars.sizes["400"],
     paddingInline: vars.space["150"],
+
+    fontSize: vars.fontSizes["075"],
+    fontWeight: vars.fontWeights[500],
+    lineHeight: vars.lineHeights["075"],
+    letterSpacing: vars.letterSpacings["s1"],
   },
   lg: {
     gap: vars.space["100"],
     height: vars.sizes["500"],
     paddingInline: vars.space["200"],
+
+    fontSize: vars.fontSizes["075"],
+    fontWeight: vars.fontWeights[500],
+    lineHeight: vars.lineHeights["075"],
+    letterSpacing: vars.letterSpacings["s1"],
   },
   xl: {
     gap: vars.space["100"],
     height: vars.sizes["600"],
     paddingInline: vars.space["300"],
+
+    fontSize: vars.fontSizes[100],
+    fontWeight: vars.fontWeights[500],
+    lineHeight: vars.lineHeights[100],
+    letterSpacing: vars.letterSpacings["h6"],
   },
 });
 
@@ -181,4 +203,8 @@ export const shapes = styleVariants({
       backgroundColor: vars.colors["gray-600-transparent-16"],
     },
   },
+});
+
+export const stretch = style({
+  width: "100%",
 });

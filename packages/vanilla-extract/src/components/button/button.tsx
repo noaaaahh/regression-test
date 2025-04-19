@@ -1,38 +1,49 @@
 import clsx from "clsx";
-import type { ComponentPropsWithoutRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { vapor } from "~/libs/factory";
-import { sizes, colors, shapes, base } from "./button.css";
+import * as styles from "./button.css";
 
-type Size = keyof typeof sizes;
-type Color = keyof typeof colors;
-type Shape = keyof typeof shapes;
+type Size = keyof typeof styles.sizes;
+type Color = keyof typeof styles.colors;
+type Shape = keyof typeof styles.shapes;
 
 interface ButtonProps extends ComponentPropsWithoutRef<typeof vapor.button> {
   size?: Size;
   color?: Color;
   shape?: Shape;
+  stretch?: boolean;
 }
 
-export const Button = ({
-  color = "primary",
-  shape = "fill",
-  size = "md",
-  className,
-  children,
-  ...props
-}: ButtonProps) => {
-  return (
-    <vapor.button
-      className={clsx(
-        base,
-        colors[color],
-        shapes[shape],
-        sizes[size],
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </vapor.button>
-  );
-};
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      color = "primary",
+      shape = "fill",
+      size = "md",
+      stretch,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <vapor.button
+        ref={ref}
+        className={clsx(
+          styles.base,
+          styles.colors[color],
+          styles.shapes[shape],
+          styles.sizes[size],
+          stretch && styles.stretch,
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </vapor.button>
+    );
+  }
+);
+
+// CSS 분리 가능한지

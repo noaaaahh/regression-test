@@ -40,11 +40,20 @@ jobs:
       - run: pnpm install
 
       - name: Install Playwright Browsers
-        run: cd packages/vanilla-extract && npx playwright install --with-deps
+        run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
+
+      - run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Take a snapshot
         run: |
           cd packages/vanilla-extract && npx playwright test --update-snapshots
           git add ./tests/__screenshot__
-          git commit -m 'test: update snapshots'
-          git push -u origin HEAD:${{ github.ref }}
+          git commit -m 'ci: update snapshots'
+
+      - name: Update Snapshots
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

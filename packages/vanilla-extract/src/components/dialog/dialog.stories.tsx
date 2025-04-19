@@ -15,6 +15,29 @@ export default {
 
 type Story = StoryObj<typeof Dialog>;
 
+export const TEST_BED: Story = {
+  render: (args) => (
+    <Dialog {...args} open>
+      <Dialog.Trigger asChild>
+        <Button>Trigger</Button>
+      </Dialog.Trigger>
+      <Dialog.CombinedContent>
+        <Dialog.Header>
+          <Dialog.Title>Title</Dialog.Title>
+        </Dialog.Header>
+        <Dialog.Body>
+          <Dialog.Description>Description</Dialog.Description>
+        </Dialog.Body>
+        <Dialog.Footer>
+          <Dialog.Close asChild>
+            <Button color="hint">Close</Button>
+          </Dialog.Close>
+        </Dialog.Footer>
+      </Dialog.CombinedContent>
+    </Dialog>
+  ),
+};
+
 export const Default: Story = {
   render: (args) => (
     <Dialog {...args}>

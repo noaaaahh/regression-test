@@ -36,3 +36,9 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# Storybook
+storybook-static
+
+**/tests/report
+**/tests/results
