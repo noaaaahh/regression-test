@@ -1,7 +1,6 @@
 import {
   createGlobalTheme,
   createGlobalThemeContract,
-  fontFace,
   globalStyle,
   layer,
 } from "@vanilla-extract/css";
@@ -20,9 +19,6 @@ const PREFIX = "vapor";
 export const vapor = layer();
 export const vars = createGlobalThemeContract(
   {
-    asdf: {
-      a: "",
-    },
     radii: {
       "000": "",
       "050": "",
@@ -138,9 +134,7 @@ export const vars = createGlobalThemeContract(
 );
 
 createGlobalTheme(":root", vars, {
-  asdf: {
-    a: "#eeeeee",
-  },
+  "@layer": vapor,
 
   radii,
   space,
@@ -156,15 +150,9 @@ createGlobalTheme(":root", vars, {
   },
 });
 
-const pretendard = fontFace([
-  {
-    src: 'local("Pretendard")',
-  },
-]);
-
 globalStyle("*", {
   boxSizing: "border-box",
   margin: 0,
   padding: 0,
-  fontFamily: `${pretendard}, -apple₩-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
+  fontFamily: `Pretendard Variable, -apple₩-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
 });

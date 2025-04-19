@@ -1,4 +1,4 @@
-import { isString } from "./guard.ts";
+const isString = (v: unknown): v is string => typeof v === "string";
 
 export const callAll =
   <T extends (...a: any[]) => void>(...fns: (T | undefined)[]) =>

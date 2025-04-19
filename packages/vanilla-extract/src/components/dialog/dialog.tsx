@@ -39,7 +39,7 @@ const Overlay = ({ className, ...props }: OverlayProps) => {
 /******************************************************************************/
 
 interface CombinedContentProps
-  extends ComponentPropsWithoutRef<typeof Radix.Content> {}
+  extends ComponentPropsWithoutRef<typeof Content> {}
 
 const CombinedContent = (props: CombinedContentProps) => {
   return (
@@ -50,7 +50,9 @@ const CombinedContent = (props: CombinedContentProps) => {
   );
 };
 
-/******************************************************************************/
+/* -------------------------------------------------------------------------------------------------
+ * Dialog.Content
+ * -----------------------------------------------------------------------------------------------*/
 
 interface ContentProps extends ComponentPropsWithoutRef<typeof Radix.Content> {}
 
