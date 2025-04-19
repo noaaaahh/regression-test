@@ -47,7 +47,7 @@ jobs:
       - run: pnpm install
 
       - name: Install Playwright Browsers
-        run: pnpm vanilla exec playwright install chromium firefox webkit msedge --with-deps
+        run: pnpm vanilla exec playwright install --with-deps
         # run: cd packages/vanilla-extract && npx playwright install chromium firefox webkit msedge --with-deps
 
       # run Storybook
@@ -73,6 +73,7 @@ jobs:
         id: playwright-summary
         with:
           report-file: ./report/index.json
+          report-url: "https://google.com"
           create-comment: false
 
       - uses: marocchino/sticky-pull-request-comment@v2

@@ -6,6 +6,8 @@ export default defineConfig({
   snapshotPathTemplate: "./tests/__screenshot__/{arg}-{projectName}-{platform}-{ext}",
   outputDir: `./tests/results/`,
 
+  fullyParallel: true,
+
   reporter: [
     ["html", { outputFolder: "./tests/report" }],
     ["json", { outputFile: "./tests/report/index.json" }],
